@@ -1,10 +1,11 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Product } from '../../types/products'
+import { Product } from '../../types/product'
 import { client } from '@/sanity/lib/client'
 import { allProducts } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/image'
+import { Button } from './ui/button'
 
 const FeaturedProducts=()=> {
   const [product,setProduct]= useState<Product[]>([])
@@ -27,9 +28,10 @@ const FeaturedProducts=()=> {
             {product.image && ( <Image 
             src={urlFor (product.image).url()} alt={"image"} width={200} height={200} />)}
           
-            <h1 className='text-[#151875] font-bold text-[24px]'>{product.name}</h1>
+            <h1 className='text-[#151875] font-semibold text-[24px]'>{product.name}</h1>
             <p className='text-[#151875] font-normal text-[18px]'>{product.description}</p>
             <p className='text-[#151875] font-bold text-[24px]'>${product.price}</p>
+           
 
           </div>
         
@@ -42,4 +44,4 @@ const FeaturedProducts=()=> {
 
 
 
-export default FeaturedProducts 
+export default FeaturedProducts
